@@ -66,13 +66,13 @@
 			<p class=fragment>
 				Programmers … automating datacenters
 			</p>
-			<p class=fragment>	
+			<p class=fragment>
 				If you have anything at Rackspace, our stuff set it up
 			</p>
 			<p class=fragment>
 				Ruby & Scala
 			</p>
-			<p class=fragment>	
+			<p class=fragment>
 				TDD/BDD/DI: love it & live it
 			</p>
 			<p class=fragment>
@@ -87,7 +87,7 @@
 			test</code> command and the <code>testing</code> package.
 			</blockquote>
 		</section>
-			
+
 		<section>
 			<h2>and we said:</h2>
 			<img src="img/nono.gif"/>
@@ -95,26 +95,24 @@
 			unit tests … bless your heart
 			</blockquote>
 		</section>
-		
+
 		<section>
 			<h2>Luckily we're not alone</h2>
 			<p class=fragment>Gomega – matcher library</p>
 			<p class=fragment>Ginkgo – BDD framework</p>
 			<p class=fragment>Gomock – mocking framework</p>
 		</section>
-		
+
 		<section>
 			<h2>Gomega – the matcher library</h2>
-			
 			3 lines
 			<pre><code>if got != want {
 	t.Errorf("got %v; want %v", got, want)
 }</code></pre>
 			1 line
 			<pre><code>Expect(got).To(Equal(want))</code></pre>
-
 		</section>
-		
+
 		<section>
 			lets take a closer look
 <pre><code>func Expect(actual interface{}) GomegaAssertion
@@ -128,7 +126,7 @@ func BeIdenticalTo(expected interface{}) types.GomegaMatcher</code></pre>
 			<p class=fragment>a type checker … that happens to match</p>
 			<p class=fragment>gain <em>declarative</em>; sacrifice <em>imperative</em></p>
 		</section>
-		
+
 		<section>
 			<h2>Ginkgo – the BDD framework</h2>
 			<pre><code data-trim>
@@ -158,7 +156,7 @@ type MyInterface interface {
 }
 
 // call mockgen
-			
+
 func TestMyThing(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
@@ -170,12 +168,11 @@ func TestMyThing(t *testing.T) {
 			</code></pre>
 			<p>works as expected, for a bit of code-gen overhead</p>
 		</section>
-				
-		<section>
+
 			<h2>BDD + Matchers + Mocks &Implies; Modern OOP in GO!</h2>
 			<img src="img/drugs.gif">
 		</section>
-		
+
 		<section>
 		<!--
 			<h2>Pros</h2>
@@ -184,70 +181,62 @@ func TestMyThing(t *testing.T) {
 			<p class=fragment>encourages specific design patterns</p>
 			<p class=fragment>can easily migrate from BDD-happy platforms</p>
 			-->
-			
+
 			<table>
-			
+
 			<tr>
 			<td>Docs?</td>
 			<td class=fragment>tests</strike> specs are the docs</td>
 			</tr>
-			
+
 			<tr>
 			<td>DSL!</td>
 			<td class=fragment>easy to read & write</td>
 			</tr>
-			
+
 			<tr>
 			<td>Design?</td>
 			<td class=fragment>encourages specific design patterns</td>
 			</tr>
-			
+
 			<tr>
 			<td>Learning Curve?</td>
 			<td class=fragment>can easily migrate from BDD-happy platforms</td>
 			</tr>
-						
-			</table>			
-		</section>
-		
-		<section>
-			<h2>Go's way</h2>
-			
-			<table>
-			
-			<tr>
-			<td>Docs?</td>
-			<td class=fragment>godoc + Examples</td>
-			</tr>
-			
-			<tr>
-			<td>DSL?</td>
-			<td class=fragment>Go is easy to reason about</td>
-			</tr>
-			
-			<tr>
-			<td>Design?</td>
-			<td class=fragment>no comment</td>
-			</tr>
-			
-			<tr>
-			<td>Learning Curve?</td>
-			<td class=fragment>yep, but so did BDD</td>
-			</tr>
-						
 			</table>
 		</section>
-		
 		<section>
+			<h2>Go's way</h2>
+
+      <table>
+        <tr>
+          <td>Docs?</td>
+          <td class=fragment>godoc + Examples</td>
+        </tr>
+        <tr>
+          <td>DSL?</td>
+          <td class=fragment>Go is easy to reason about</td>
+        </tr>
+        <tr>
+          <td>Design?</td>
+          <td class=fragment>no comment</td>
+        </tr>
+        <tr>
+          <td>Learning Curve?</td>
+          <td class=fragment>yep, but so did BDD</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
 			<h2>godoc: src is the docs</h2>
 			<p>all docs in .go files</p>
 			<p>godoc cmd</p>
 			<p>golint cmd</p>
 		</section>
-			
+
 		<section>
 			<h2>godoc + Examples</h2>
-			
 			<pre><code data-trim>
 package foobar_test
 
@@ -255,21 +244,21 @@ import "fmt"
 
 func ExampleFoo() {
 	fmt.Println(Foo())
-	
+
 	// Output:
 	// Bar
 }
-			</code></pre>	
-			
+			</code></pre>
+
 			<a href="https://golang.org/pkg/crypto/rand/#example_Read">crypto/rand.Read</a>;
 			<a href="https://golang.org/src/crypto/rand/example_test.go">src</a>
 			<p>Is it better than spec-docs? ¯\_(ツ)_/¯</p>
 			<p class=fragment>tho it is cheaper<p/>
 		</section>
-		
+
 		<section>
 			<h2>testing is just code</h2>
-			
+
 			<p>entry point &amp; output</p>
 			<p>no hidden layers</p>
 			<p>can access privates (in same pkg)</p>
@@ -277,7 +266,7 @@ func ExampleFoo() {
 			<p>agnostic about designs</p>
 			<p>wisdom about clean & correct code applies</p>
 		</section>
-		
+
 		<section>
 			<h2>why a mock framework?</h2>
 			<pre><code data-trim>
@@ -287,7 +276,7 @@ type CRUDer interface {
 	Update(m model.M) error
 	Destroy(id model.ID) error
 }
-			</code></pre>	
+			</code></pre>
 			<pre><code data-trim>
 type Creator interface {
 	Create(m model.M) error
@@ -306,7 +295,7 @@ type Destroyer interface {
 }
 			</code></pre>
 		</section>
-		
+
   		<section>
 			<h2>narrow interface</h2>
 			<pre><code data-trim>
@@ -324,9 +313,9 @@ func TestReplyNarrow(t testing.T) {
 			</code></pre>
 			<p>depends on codegen to implement entire interface</p>
 		</section>
-		
+
   		<section>
-  			<h2>broad interface</h2>		
+  			<h2>broad interface</h2>
 			<pre><code data-trim>
 type replyCreator struct{ m model.M }
 func (rc replyCreator) Create(m model.M) error {
@@ -339,7 +328,7 @@ func TestReplyBroad(t testing.T) {
 	if rc.m.threadID != 6 {
 		t.Error("wrong thread id:", rc.m.threadID)
 	}
-	
+
 	if rc.message != "hiya!" {
 		t.Error("wrong message:", rc.m.msg)
 	}
@@ -347,18 +336,17 @@ func TestReplyBroad(t testing.T) {
 			</code></pre>
 			<p>no codegen, just a little code</p>
 		</section>
-		
+
 		<section>
 			<h2>BDD/Mock tools</h2><p>non-trivial engineering efforts; seem easy</p>
 			<h2>Go's test tools</h2><p>very aligned to the platform; well supported</p>
 		</section>
 
-		<section>
-			<h2>Questions?</h2>
-			<img src="img/clap.gif">
-		</section>
-			
-        </section>
+    <section>
+      <h2>Questions?</h2>
+      <img src="img/clap.gif">
+    </section>
+    </section>
         <!--END Franco Slides-->
 
         <!--BEGIN Trevor Slides-->
@@ -369,6 +357,29 @@ func TestReplyBroad(t testing.T) {
 
           <section>
             <p>Nothing here is an original idea</p>
+            <aside class="notes">
+              - Found this approach on the mailing list
+              - I like to do talks that I'd want to see myself
+            </aside>
+          </section>
+
+          <section>
+            <h4>Problem: testing code paths in HTTP handlers</h4>
+            <ul>
+              <li>Must mock the methods the handler calls</li>
+              <li>Don't want to have to do a full-on integration test</li>
+            </ul>
+            <aside class="notes">
+              In this case that means not doing like test information in the DB
+            </aside>
+          </section>
+
+          <section>
+            <h4>What features of Go can we leverage?</h4>
+            <ul>
+              <li>Interfaces</li>
+              <li>Functions are first-class</li>
+            </ul>
           </section>
         </section>
         <!--END Trevor Slides-->
